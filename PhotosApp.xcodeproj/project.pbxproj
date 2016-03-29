@@ -14,6 +14,7 @@
 		1190D38C1CAAC751007E4450 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1190D38B1CAAC751007E4450 /* Assets.xcassets */; };
 		1190D38F1CAAC751007E4450 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1190D38D1CAAC751007E4450 /* LaunchScreen.storyboard */; };
 		1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */; };
+		1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		1190D3901CAAC751007E4450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1190D3961CAAC879007E4450 /* AFAlbumsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAlbumsTableViewController.h; sourceTree = "<group>"; };
 		1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAlbumsTableViewController.m; sourceTree = "<group>"; };
+		1190D3991CAAC97A007E4450 /* AFAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAlbumTableViewCell.h; sourceTree = "<group>"; };
+		1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAlbumTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				1190D37F1CAAC751007E4450 /* Supporting Files */,
 				1190D3961CAAC879007E4450 /* AFAlbumsTableViewController.h */,
 				1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */,
+				1190D3991CAAC97A007E4450 /* AFAlbumTableViewCell.h */,
+				1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */,
 			);
 			path = PhotosApp;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			files = (
 				1190D3871CAAC751007E4450 /* ViewController.m in Sources */,
 				1190D3841CAAC751007E4450 /* AppDelegate.m in Sources */,
+				1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */,
 				1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */,
 				1190D3811CAAC751007E4450 /* main.m in Sources */,
 			);

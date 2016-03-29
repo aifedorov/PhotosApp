@@ -7,6 +7,7 @@
 //
 
 #import "AFAlbumsTableViewController.h"
+#import "AFAlbumTableViewCell.h"
 
 @interface AFAlbumsTableViewController ()
 
@@ -44,9 +45,9 @@
     
     static NSString * const cellIdentifier = @"albumCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    cell.textLabel.text = @"My album";
+    AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.nameLable.text = @"My album";
+    cell.countPhotos.text = @"230";
     
     return cell;
 }

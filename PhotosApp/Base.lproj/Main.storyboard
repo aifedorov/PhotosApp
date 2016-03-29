@@ -8,18 +8,64 @@
         <scene sceneID="zwv-Vf-jNo">
             <objects>
                 <tableViewController id="lR4-Bv-p7R" customClass="AFAlbumsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vm8-TB-1E6">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vm8-TB-1E6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" id="hAg-yi-US6">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="90" id="hAg-yi-US6" customClass="AFAlbumTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hAg-yi-US6" id="igq-Bf-CEy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a95-S8-ZkI">
+                                            <rect key="frame" x="8" y="5" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="948-Yd-EHk"/>
+                                                <constraint firstAttribute="height" constant="80" id="mmx-6U-kji"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3x6-5M-cFq">
+                                            <rect key="frame" x="113" y="5" width="457" height="80"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="countPthotos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtK-kL-L2g">
+                                                    <rect key="frame" x="0.0" y="44" width="77" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameAlbum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y0-Hz-cRb">
+                                                    <rect key="frame" x="0.0" y="15" width="108" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="VtK-kL-L2g" firstAttribute="top" secondItem="1y0-Hz-cRb" secondAttribute="bottom" constant="5" id="Rg0-j9-4Au"/>
+                                                <constraint firstItem="VtK-kL-L2g" firstAttribute="leading" secondItem="3x6-5M-cFq" secondAttribute="leading" id="atk-tT-Kxv"/>
+                                                <constraint firstItem="1y0-Hz-cRb" firstAttribute="leading" secondItem="3x6-5M-cFq" secondAttribute="leading" id="hVc-fx-8TM"/>
+                                                <constraint firstItem="1y0-Hz-cRb" firstAttribute="top" secondItem="3x6-5M-cFq" secondAttribute="top" constant="15" id="qwq-ki-fhj"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="3x6-5M-cFq" firstAttribute="leading" secondItem="a95-S8-ZkI" secondAttribute="trailing" constant="25" id="RXj-eh-0ts"/>
+                                        <constraint firstItem="3x6-5M-cFq" firstAttribute="height" secondItem="a95-S8-ZkI" secondAttribute="height" id="Uvw-x1-263"/>
+                                        <constraint firstItem="3x6-5M-cFq" firstAttribute="centerY" secondItem="a95-S8-ZkI" secondAttribute="centerY" id="Zov-uI-iiR"/>
+                                        <constraint firstItem="a95-S8-ZkI" firstAttribute="centerY" secondItem="igq-Bf-CEy" secondAttribute="centerY" id="cYD-Qy-Xed"/>
+                                        <constraint firstItem="a95-S8-ZkI" firstAttribute="leading" secondItem="igq-Bf-CEy" secondAttribute="leading" constant="8" id="rg5-LB-BnG"/>
+                                        <constraint firstAttribute="trailing" secondItem="3x6-5M-cFq" secondAttribute="trailing" constant="30" id="wVO-ER-KEo"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="countPhotos" destination="VtK-kL-L2g" id="mKB-SS-zgg"/>
+                                    <outlet property="coverImageView" destination="a95-S8-ZkI" id="AOi-hm-lJg"/>
+                                    <outlet property="nameLable" destination="1y0-Hz-cRb" id="SGQ-nt-udB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
