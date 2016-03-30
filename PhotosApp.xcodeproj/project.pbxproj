@@ -15,6 +15,7 @@
 		1190D38F1CAAC751007E4450 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1190D38D1CAAC751007E4450 /* LaunchScreen.storyboard */; };
 		1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */; };
 		1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */; };
+		1190D3ED1CABDE28007E4450 /* AFPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3EC1CABDE28007E4450 /* AFPhotosCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAlbumsTableViewController.m; sourceTree = "<group>"; };
 		1190D3991CAAC97A007E4450 /* AFAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAlbumTableViewCell.h; sourceTree = "<group>"; };
 		1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAlbumTableViewCell.m; sourceTree = "<group>"; };
+		1190D3EB1CABDE28007E4450 /* AFPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotosCollectionViewController.h; sourceTree = "<group>"; };
+		1190D3EC1CABDE28007E4450 /* AFPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPhotosCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 				1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */,
 				1190D3991CAAC97A007E4450 /* AFAlbumTableViewCell.h */,
 				1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */,
+				1190D3EB1CABDE28007E4450 /* AFPhotosCollectionViewController.h */,
+				1190D3EC1CABDE28007E4450 /* AFPhotosCollectionViewController.m */,
 			);
 			path = PhotosApp;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				1190D3841CAAC751007E4450 /* AppDelegate.m in Sources */,
 				1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */,
 				1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */,
+				1190D3ED1CABDE28007E4450 /* AFPhotosCollectionViewController.m in Sources */,
 				1190D3811CAAC751007E4450 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +319,7 @@
 				1190D3951CAAC751007E4450 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
