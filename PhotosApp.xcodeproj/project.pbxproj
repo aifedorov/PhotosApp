@@ -16,6 +16,7 @@
 		1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */; };
 		1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */; };
 		1190D3ED1CABDE28007E4450 /* AFPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3EC1CABDE28007E4450 /* AFPhotosCollectionViewController.m */; };
+		1190D3F01CABDFDB007E4450 /* AFPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3EF1CABDFDB007E4450 /* AFPhotoCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAlbumTableViewCell.m; sourceTree = "<group>"; };
 		1190D3EB1CABDE28007E4450 /* AFPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotosCollectionViewController.h; sourceTree = "<group>"; };
 		1190D3EC1CABDE28007E4450 /* AFPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPhotosCollectionViewController.m; sourceTree = "<group>"; };
+		1190D3EE1CABDFDB007E4450 /* AFPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		1190D3EF1CABDFDB007E4450 /* AFPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */,
 				1190D3EB1CABDE28007E4450 /* AFPhotosCollectionViewController.h */,
 				1190D3EC1CABDE28007E4450 /* AFPhotosCollectionViewController.m */,
+				1190D3EE1CABDFDB007E4450 /* AFPhotoCollectionViewCell.h */,
+				1190D3EF1CABDFDB007E4450 /* AFPhotoCollectionViewCell.m */,
 			);
 			path = PhotosApp;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			files = (
 				1190D3871CAAC751007E4450 /* ViewController.m in Sources */,
 				1190D3841CAAC751007E4450 /* AppDelegate.m in Sources */,
+				1190D3F01CABDFDB007E4450 /* AFPhotoCollectionViewCell.m in Sources */,
 				1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */,
 				1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */,
 				1190D3ED1CABDE28007E4450 /* AFPhotosCollectionViewController.m in Sources */,
