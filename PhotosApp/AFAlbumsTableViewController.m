@@ -15,20 +15,25 @@
 @interface AFAlbumsTableViewController ()
 
 @property (strong,nonatomic) PHFetchResult *userAlbums;
+@property (nonatomic, strong) PHImageManager *imageManager;
 
 @end
 
 @implementation AFAlbumsTableViewController
 
+static NSString * const cellIdentifier = @"albumCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
-    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-//    PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
-    
     self.userAlbums = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+    self.imageManager = [PHCachingImageManager defaultManager];
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -43,8 +48,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString * const cellIdentifier = @"albumCell";
-    
     AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     PHCollection *collection = self.userAlbums[indexPath.row];
@@ -52,6 +55,19 @@
     PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
     PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
     
+    PHAsset *asset = [assetsFetchResult lastObject];
+    
+    CGSize AssetGridThumbnailSize =  CGSizeMake(80.f, 80.f);
+    
+    [self.imageManager requestImageForAsset:asset
+                                 targetSize:AssetGridThumbnailSize
+                                contentMode:PHImageContentModeAspectFill
+                                    options:nil
+                              resultHandler:^(UIImage *result, NSDictionary *info) {
+                                  cell.thumbnailImage = result;
+                              }];
+    
+
     cell.nameLable.text = assetCollection.localizedTitle;
     cell.countPhotos.text = [NSString stringWithFormat:@"%ld", [assetsFetchResult count]];
     

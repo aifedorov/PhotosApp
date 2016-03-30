@@ -10,14 +10,9 @@
 
 @implementation AFAlbumTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setThumbnailImage:(UIImage *)thumbnailImage {
+    _thumbnailImage = thumbnailImage;
+    self.thumbnailImageView.image = thumbnailImage;
 }
 
 @end

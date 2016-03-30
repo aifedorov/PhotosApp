@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *countPhotos;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailImageView;
 
+@property (nonatomic, strong) UIImage *thumbnailImage;
+
 @end

@@ -23,11 +23,6 @@ static CGSize AssetGridThumbnailSize;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Do any additional setup after loading the view.
-    
     self.imageManager = [PHCachingImageManager defaultManager];
 }
 
@@ -41,7 +36,6 @@ static CGSize AssetGridThumbnailSize;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
