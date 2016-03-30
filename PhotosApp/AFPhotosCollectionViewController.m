@@ -7,14 +7,17 @@
 //
 
 #import "AFPhotosCollectionViewController.h"
+#import "AFPhotoCollectionViewCell.h"
 
 @interface AFPhotosCollectionViewController ()
+
+@property (nonatomic, strong) PHImageManager *imageManager;
 
 @end
 
 @implementation AFPhotosCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"CellView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,10 +25,9 @@ static NSString * const reuseIdentifier = @"Cell";
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
     // Do any additional setup after loading the view.
+    
+    self.imageManager = [PHCachingImageManager defaultManager];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,21 +47,29 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark <UICollectionViewDataSource>
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    return [self.assetsFetchResults count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
+    PHAsset *asset = self.assetsFetchResults[indexPath.item];
+    
+    AFPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.representedAssetIdentifier = asset.localIdentifier;
+    
+    CGSize thumbnailSize = CGSizeMake(80.f, 80.f);
+    
+    [self.imageManager requestImageForAsset:asset
+                                 targetSize:thumbnailSize
+                                contentMode:PHImageContentModeDefault
+                                    options:nil
+                              resultHandler:^(UIImage *result, NSDictionary *info) {
+
+                                  if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
+                                      cell.thumbnailImage = result;
+                                  }
+                              }];
     
     return cell;
 }

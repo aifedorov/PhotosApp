@@ -28,8 +28,6 @@
     PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     
     self.fetchResults = @[allPhotos];
-    
-    NSLog(@"%ld", [[self.fetchResults objectAtIndex:0] count]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,15 +63,7 @@
         AFAlbumTableViewCell *cell = sender;
         
         photosCollectionViewController.title = cell.nameLable.text;
-        
-        PHCollection *collection = [self.fetchResults objectAtIndex:0];
-        
-        if ([collection isKindOfClass:[PHAssetCollection class]]) {
-            
-            PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-            PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
-            photosCollectionViewController.assetsFetchResults = assetsFetchResult;
-        }
+        photosCollectionViewController.assetsFetchResults = [self.fetchResults objectAtIndex:0];
     }
 }
 
