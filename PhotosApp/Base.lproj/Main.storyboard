@@ -13,11 +13,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="90" id="hAg-yi-US6" customClass="AFAlbumTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="90" id="hAg-yi-US6" customClass="AFAlbumTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hAg-yi-US6" id="igq-Bf-CEy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a95-S8-ZkI">
@@ -28,7 +28,7 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3x6-5M-cFq">
-                                            <rect key="frame" x="113" y="5" width="457" height="80"/>
+                                            <rect key="frame" x="113" y="5" width="424" height="80"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="countPthotos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtK-kL-L2g">
                                                     <rect key="frame" x="0.0" y="44" width="77" height="15"/>
@@ -63,8 +63,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="countPhotos" destination="VtK-kL-L2g" id="mKB-SS-zgg"/>
-                                    <outlet property="coverImageView" destination="a95-S8-ZkI" id="AOi-hm-lJg"/>
                                     <outlet property="nameLable" destination="1y0-Hz-cRb" id="SGQ-nt-udB"/>
+                                    <outlet property="thumbnailImageView" destination="a95-S8-ZkI" id="a28-j1-a9C"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

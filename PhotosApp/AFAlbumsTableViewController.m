@@ -9,7 +9,11 @@
 #import "AFAlbumsTableViewController.h"
 #import "AFAlbumTableViewCell.h"
 
+@import Photos;
+
 @interface AFAlbumsTableViewController ()
+
+@property (strong,nonatomic) NSArray *fetchResults;
 
 @end
 
@@ -18,11 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
+    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.fetchResults = @[allPhotos];
+    
+    NSLog(@"%ld", [[self.fetchResults objectAtIndex:0] count]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,12 +38,8 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [self.fetchResults count];
 }
 
 
@@ -47,7 +49,7 @@
     
     AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.nameLable.text = @"My album";
-    cell.countPhotos.text = @"230";
+    cell.countPhotos.text = [NSString stringWithFormat:@"%ld", [[self.fetchResults objectAtIndex:indexPath.row] count]];
     
     return cell;
 }
