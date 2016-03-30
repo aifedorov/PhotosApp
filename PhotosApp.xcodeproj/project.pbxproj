@@ -11,7 +11,6 @@
 		1190D3841CAAC751007E4450 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3831CAAC751007E4450 /* AppDelegate.m */; };
 		1190D3871CAAC751007E4450 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3861CAAC751007E4450 /* ViewController.m */; };
 		1190D38A1CAAC751007E4450 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1190D3881CAAC751007E4450 /* Main.storyboard */; };
-		1190D38C1CAAC751007E4450 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1190D38B1CAAC751007E4450 /* Assets.xcassets */; };
 		1190D38F1CAAC751007E4450 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1190D38D1CAAC751007E4450 /* LaunchScreen.storyboard */; };
 		1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3971CAAC879007E4450 /* AFAlbumsTableViewController.m */; };
 		1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D39A1CAAC97A007E4450 /* AFAlbumTableViewCell.m */; };
@@ -27,7 +26,6 @@
 		1190D3851CAAC751007E4450 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1190D3861CAAC751007E4450 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1190D3891CAAC751007E4450 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1190D38B1CAAC751007E4450 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1190D38E1CAAC751007E4450 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1190D3901CAAC751007E4450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1190D3961CAAC879007E4450 /* AFAlbumsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAlbumsTableViewController.h; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 				1190D3851CAAC751007E4450 /* ViewController.h */,
 				1190D3861CAAC751007E4450 /* ViewController.m */,
 				1190D3881CAAC751007E4450 /* Main.storyboard */,
-				1190D38B1CAAC751007E4450 /* Assets.xcassets */,
 				1190D38D1CAAC751007E4450 /* LaunchScreen.storyboard */,
 				1190D3901CAAC751007E4450 /* Info.plist */,
 				1190D37F1CAAC751007E4450 /* Supporting Files */,
@@ -158,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1190D38F1CAAC751007E4450 /* LaunchScreen.storyboard in Resources */,
-				1190D38C1CAAC751007E4450 /* Assets.xcassets in Resources */,
 				1190D38A1CAAC751007E4450 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

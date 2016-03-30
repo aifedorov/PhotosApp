@@ -18,6 +18,7 @@
 @implementation AFPhotosCollectionViewController
 
 static NSString * const reuseIdentifier = @"CellView";
+static CGSize AssetGridThumbnailSize;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +29,14 @@ static NSString * const reuseIdentifier = @"CellView";
     // Do any additional setup after loading the view.
     
     self.imageManager = [PHCachingImageManager defaultManager];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize cellSize = ((UICollectionViewFlowLayout *)self.collectionViewLayout).itemSize;
+    AssetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,14 +67,11 @@ static NSString * const reuseIdentifier = @"CellView";
     AFPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.representedAssetIdentifier = asset.localIdentifier;
     
-    CGSize thumbnailSize = CGSizeMake(80.f, 80.f);
-    
     [self.imageManager requestImageForAsset:asset
-                                 targetSize:thumbnailSize
-                                contentMode:PHImageContentModeDefault
+                                 targetSize:AssetGridThumbnailSize
+                                contentMode:PHImageContentModeAspectFill
                                     options:nil
                               resultHandler:^(UIImage *result, NSDictionary *info) {
-
                                   if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
                                       cell.thumbnailImage = result;
                                   }
@@ -73,36 +79,5 @@ static NSString * const reuseIdentifier = @"CellView";
     
     return cell;
 }
-
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

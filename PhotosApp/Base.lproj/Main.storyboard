@@ -87,8 +87,9 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="RLk-Qk-XXb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4eu-KK-zzb">
-                            <size key="itemSize" width="110" height="93"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qUb-Df-QsR">
+                            <size key="itemSize" width="80" height="80"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -101,21 +102,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bvm-sQ-Rou">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKH-ay-dl6">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Bvm-sQ-Rou" secondAttribute="bottom" id="ITc-4d-Lza"/>
-                                    <constraint firstItem="Bvm-sQ-Rou" firstAttribute="leading" secondItem="Qsy-3v-YAH" secondAttribute="leading" id="a1D-fW-5Rc"/>
-                                    <constraint firstItem="Bvm-sQ-Rou" firstAttribute="top" secondItem="Qsy-3v-YAH" secondAttribute="top" id="bSI-uY-Qaz"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bvm-sQ-Rou" secondAttribute="trailing" id="lko-Jb-68Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZKH-ay-dl6" secondAttribute="trailing" id="8Rt-6j-Vv7"/>
+                                    <constraint firstItem="ZKH-ay-dl6" firstAttribute="leading" secondItem="Qsy-3v-YAH" secondAttribute="leading" id="ReL-Mc-Aur"/>
+                                    <constraint firstItem="ZKH-ay-dl6" firstAttribute="top" secondItem="Qsy-3v-YAH" secondAttribute="top" id="nIn-9p-BkE"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZKH-ay-dl6" secondAttribute="bottom" id="wgF-3T-vDt"/>
                                 </constraints>
-                                <size key="customSize" width="80" height="80"/>
                                 <connections>
-                                    <outlet property="imageView" destination="Bvm-sQ-Rou" id="a9c-iX-zIn"/>
+                                    <outlet property="imageView" destination="ZKH-ay-dl6" id="q6d-uB-cQa"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
