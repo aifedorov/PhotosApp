@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@import Photos;
+
 @interface AFPhotosCollectionViewController : UICollectionViewController
+
+@property (strong, nonatomic) PHFetchResult *assetsFetchResults;
 
 @end
