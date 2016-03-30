@@ -14,7 +14,7 @@
 
 @interface AFAlbumsTableViewController ()
 
-@property (strong,nonatomic) NSArray *fetchResults;
+@property (strong,nonatomic) PHFetchResult *userAlbums;
 
 @end
 
@@ -25,9 +25,9 @@
     
     PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
     allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-    PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
+//    PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     
-    self.fetchResults = @[allPhotos];
+    self.userAlbums = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,17 +38,22 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.fetchResults count];
+    return [self.userAlbums count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString * const cellIdentifier = @"albumCell";
     
     AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.nameLable.text = @"My album";
-    cell.countPhotos.text = [NSString stringWithFormat:@"%ld", [[self.fetchResults objectAtIndex:indexPath.row] count]];
+    
+    PHCollection *collection = self.userAlbums[indexPath.row];
+    
+    PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
+    PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+    
+    cell.nameLable.text = assetCollection.localizedTitle;
+    cell.countPhotos.text = [NSString stringWithFormat:@"%ld", [assetsFetchResult count]];
     
     return cell;
 }
@@ -57,14 +62,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.destinationViewController isKindOfClass:[AFPhotosCollectionViewController class]]) {
-        
-        AFPhotosCollectionViewController *photosCollectionViewController = segue.destinationViewController;
-        AFAlbumTableViewCell *cell = sender;
-        
-        photosCollectionViewController.title = cell.nameLable.text;
-        photosCollectionViewController.assetsFetchResults = [self.fetchResults objectAtIndex:0];
-    }
+//    if ([segue.destinationViewController isKindOfClass:[AFPhotosCollectionViewController class]]) {
+//        
+//        AFPhotosCollectionViewController *photosCollectionViewController = segue.destinationViewController;
+//        AFAlbumTableViewCell *cell = sender;
+    
+//        photosCollectionViewController.title = cell.nameLable.text;
+//        photosCollectionViewController.assetsFetchResults = self.userAlbums;
+//    }
 }
 
 @end

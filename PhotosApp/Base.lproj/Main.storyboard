@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Photos-->
         <scene sceneID="zwv-Vf-jNo">
             <objects>
                 <tableViewController id="lR4-Bv-p7R" customClass="AFAlbumsTableViewController" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                             <outlet property="delegate" destination="lR4-Bv-p7R" id="7k3-90-dbG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="K1L-FC-phI"/>
+                    <navigationItem key="navigationItem" title="Photos" id="K1L-FC-phI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5R-bu-y11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
