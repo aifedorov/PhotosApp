@@ -78,14 +78,21 @@ static NSString * const cellIdentifier = @"albumCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-//    if ([segue.destinationViewController isKindOfClass:[AFPhotosCollectionViewController class]]) {
-//        
-//        AFPhotosCollectionViewController *photosCollectionViewController = segue.destinationViewController;
-//        AFAlbumTableViewCell *cell = sender;
+    if ([segue.destinationViewController isKindOfClass:[AFPhotosCollectionViewController class]]) {
+        
+        AFPhotosCollectionViewController *photosCollectionViewController = segue.destinationViewController;
+        AFAlbumTableViewCell *cell = sender;
     
-//        photosCollectionViewController.title = cell.nameLable.text;
-//        photosCollectionViewController.assetsFetchResults = self.userAlbums;
-//    }
+        photosCollectionViewController.title = cell.nameLable.text;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        PHCollection *collection = self.userAlbums[indexPath.row];
+        
+        PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
+        PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+        
+        photosCollectionViewController.assetsFetchResults = assetsFetchResult;
+    }
 }
 
 @end
