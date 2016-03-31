@@ -133,7 +133,7 @@
         <!--PreviewPhoto-->
         <scene sceneID="wd8-U0-LSR">
             <objects>
-                <viewController title="PreviewPhoto" id="YRw-Tl-nRO" customClass="AFAlbumsTableViewController" sceneMemberID="viewController">
+                <viewController title="PreviewPhoto" id="YRw-Tl-nRO" customClass="AFPreviewPhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tiB-Ph-42z"/>
                         <viewControllerLayoutGuide type="bottom" id="mqw-xf-4N4"/>
@@ -141,12 +141,26 @@
                     <view key="view" contentMode="scaleToFill" id="Y2w-UW-Bl1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GCc-Gp-DbK">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GCc-Gp-DbK" secondAttribute="trailing" id="IRk-aU-tj9"/>
+                            <constraint firstItem="GCc-Gp-DbK" firstAttribute="leading" secondItem="Y2w-UW-Bl1" secondAttribute="leading" id="Od5-mR-RUD"/>
+                            <constraint firstItem="mqw-xf-4N4" firstAttribute="top" secondItem="GCc-Gp-DbK" secondAttribute="bottom" id="SW3-XK-2FG"/>
+                            <constraint firstItem="GCc-Gp-DbK" firstAttribute="top" secondItem="tiB-Ph-42z" secondAttribute="bottom" id="kqQ-ih-vZ3"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="photoPreviewImageView" destination="GCc-Gp-DbK" id="Qeb-Gk-FJf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXQ-Jy-mqx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="265"/>
+            <point key="canvasLocation" x="2064" y="265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AMn-DB-ezp">

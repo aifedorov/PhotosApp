@@ -16,22 +16,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    
+    CGSize targetSize = CGSizeMake(CGRectGetWidth(mainScreen.bounds), CGRectGetHeight(mainScreen.bounds));
+    
+    [[PHImageManager defaultManager] requestImageForAsset:self.asset
+                                               targetSize:targetSize
+                                               contentMode:PHImageContentModeAspectFit
+                                                  options:nil
+                                            resultHandler:^(UIImage *result, NSDictionary *info) {
+                                                self.photoImage = result;
+                                            }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setPhotoImage:(UIImage *)photoImage {
+    _photoImage = photoImage;
+    self.photoPreviewImageView.image = photoImage;
 }
-*/
 
 @end
+
+

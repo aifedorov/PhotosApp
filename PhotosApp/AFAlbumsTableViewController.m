@@ -15,7 +15,6 @@
 @interface AFAlbumsTableViewController ()
 
 @property (strong,nonatomic) PHFetchResult *userAlbums;
-@property (nonatomic, strong) PHImageManager *imageManager;
 
 @end
 
@@ -27,7 +26,6 @@ static NSString * const cellIdentifier = @"albumCell";
     [super viewDidLoad];
     
     self.userAlbums = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
-    self.imageManager = [PHCachingImageManager defaultManager];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,10 +49,10 @@ static NSString * const cellIdentifier = @"albumCell";
     
     PHAsset *asset = [assetsFetchResult lastObject];
     
-    CGRect frameCell = [tableView rectForRowAtIndexPath:indexPath];
-    CGSize assetThumbnailSize =  CGSizeMake(frameCell.size.width, frameCell.size.height);
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize assetThumbnailSize = CGSizeMake(CGRectGetWidth(cell.thumbnailImageView.bounds) * scale, CGRectGetHeight(cell.thumbnailImageView.bounds) * scale);
     
-    [self.imageManager requestImageForAsset:asset
+    [[PHImageManager defaultManager] requestImageForAsset:asset
                                  targetSize:assetThumbnailSize
                                 contentMode:PHImageContentModeDefault
                                     options:nil

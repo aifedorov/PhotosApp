@@ -8,22 +8,19 @@
 
 #import "AFPhotosCollectionViewController.h"
 #import "AFPhotoCollectionViewCell.h"
+#import "AFPreviewPhotoViewController.h"
 
 @interface AFPhotosCollectionViewController ()
-
-@property (nonatomic, strong) PHImageManager *imageManager;
 
 @end
 
 @implementation AFPhotosCollectionViewController
 
 static NSString * const reuseIdentifier = @"CellView";
-static CGSize AssetGridThumbnailSize;
+static CGSize AssetThumbnailSize;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.imageManager = [PHCachingImageManager defaultManager];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -31,24 +28,31 @@ static CGSize AssetGridThumbnailSize;
     
     CGFloat scale = [UIScreen mainScreen].scale;
     CGSize cellSize = ((UICollectionViewFlowLayout *)self.collectionViewLayout).itemSize;
-    AssetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale);
+    AssetThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
-#pragma mark <UICollectionViewDataSource>
+    if ([segue.destinationViewController isKindOfClass:[AFPreviewPhotoViewController class]]) {
+        
+        AFPreviewPhotoViewController *previewPhotoViewController = segue.destinationViewController;
+        AFPhotoCollectionViewCell *cell = sender;
+        
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+        
+        PHAsset *asset = [self.assetsFetchResults objectAtIndex:indexPath.item];
+        previewPhotoViewController.asset = asset;
+        
+    }
+}
+
+#pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.assetsFetchResults count];
@@ -61,9 +65,9 @@ static CGSize AssetGridThumbnailSize;
     AFPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.representedAssetIdentifier = asset.localIdentifier;
     
-    [self.imageManager requestImageForAsset:asset
-                                 targetSize:AssetGridThumbnailSize
-                                contentMode:PHImageContentModeAspectFill
+    [[PHImageManager defaultManager] requestImageForAsset:asset
+                                 targetSize:AssetThumbnailSize
+                                contentMode:PHImageContentModeDefault
                                     options:nil
                               resultHandler:^(UIImage *result, NSDictionary *info) {
                                   if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
