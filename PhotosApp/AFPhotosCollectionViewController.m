@@ -49,7 +49,7 @@ static CGFloat const lineSpacing = 2.f;
         
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
         
-        PHAsset *asset = [self.assetsFetchResults objectAtIndex:indexPath.item];
+        PHAsset *asset = [self.photosAssetsFetchResults objectAtIndex:indexPath.item];
         previewPhotoViewController.asset = asset;
         
     }
@@ -58,12 +58,12 @@ static CGFloat const lineSpacing = 2.f;
 #pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.assetsFetchResults count];
+    return [self.photosAssetsFetchResults count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    PHAsset *asset = self.assetsFetchResults[indexPath.item];
+    PHAsset *asset = self.photosAssetsFetchResults[indexPath.item];
     
     AFPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.representedAssetIdentifier = asset.localIdentifier;

@@ -12,6 +12,6 @@
 
 @interface AFPhotosCollectionViewController : UICollectionViewController
 
-@property (strong, nonatomic) PHFetchResult *assetsFetchResults;
+@property (strong, nonatomic) PHFetchResult *photosAssetsFetchResults;
 
 @end

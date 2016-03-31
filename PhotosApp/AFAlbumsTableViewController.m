@@ -32,6 +32,17 @@ static NSString * const cellIdentifier = @"albumCell";
     [super didReceiveMemoryWarning];
 }
 
+- (PHFetchResult *) fetchPhotosAtIndexPath:(PHFetchResult *)fetchResult indexPath:(NSIndexPath *)indexPath {
+    
+    PHAssetCollection *assetCollection = (PHAssetCollection *)fetchResult[indexPath.row];
+    PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
+    fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+   
+    PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:fetchOptions];
+    
+    return assetsFetchResult;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -42,10 +53,7 @@ static NSString * const cellIdentifier = @"albumCell";
     
     AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    PHCollection *collection = self.userAlbums[indexPath.row];
-    
-    PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-    PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+    PHFetchResult *assetsFetchResult = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
     
     PHAsset *asset = [assetsFetchResult lastObject];
     
@@ -59,6 +67,8 @@ static NSString * const cellIdentifier = @"albumCell";
                               resultHandler:^(UIImage *result, NSDictionary *info) {
                                   cell.thumbnailImage = result;
                               }];
+    
+    PHAssetCollection *assetCollection = (PHAssetCollection *)self.userAlbums[indexPath.row];
     
     cell.nameLable.text = assetCollection.localizedTitle;
     cell.countPhotos.text = [NSString stringWithFormat:@"%ld", [assetsFetchResult count]];
@@ -78,12 +88,8 @@ static NSString * const cellIdentifier = @"albumCell";
         photosCollectionViewController.title = cell.nameLable.text;
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        PHCollection *collection = self.userAlbums[indexPath.row];
         
-        PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-        PHFetchResult *assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
-        
-        photosCollectionViewController.assetsFetchResults = assetsFetchResult;
+        photosCollectionViewController.photosAssetsFetchResults = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
     }
 }
 
