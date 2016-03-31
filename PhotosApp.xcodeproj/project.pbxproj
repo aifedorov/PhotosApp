@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115E37071CAD08AD0054A9F2 /* AFPreviewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 115E37061CAD08AD0054A9F2 /* AFPreviewPhotoViewController.m */; };
 		1190D3811CAAC751007E4450 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3801CAAC751007E4450 /* main.m */; };
 		1190D3841CAAC751007E4450 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3831CAAC751007E4450 /* AppDelegate.m */; };
 		1190D3871CAAC751007E4450 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190D3861CAAC751007E4450 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115E37051CAD08AD0054A9F2 /* AFPreviewPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPreviewPhotoViewController.h; sourceTree = "<group>"; };
+		115E37061CAD08AD0054A9F2 /* AFPreviewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPreviewPhotoViewController.m; sourceTree = "<group>"; };
 		1190D37C1CAAC751007E4450 /* PhotosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1190D3801CAAC751007E4450 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1190D3821CAAC751007E4450 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +87,8 @@
 				1190D3EC1CABDE28007E4450 /* AFPhotosCollectionViewController.m */,
 				1190D3EE1CABDFDB007E4450 /* AFPhotoCollectionViewCell.h */,
 				1190D3EF1CABDFDB007E4450 /* AFPhotoCollectionViewCell.m */,
+				115E37051CAD08AD0054A9F2 /* AFPreviewPhotoViewController.h */,
+				115E37061CAD08AD0054A9F2 /* AFPreviewPhotoViewController.m */,
 			);
 			path = PhotosApp;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				1190D3871CAAC751007E4450 /* ViewController.m in Sources */,
 				1190D3841CAAC751007E4450 /* AppDelegate.m in Sources */,
 				1190D3F01CABDFDB007E4450 /* AFPhotoCollectionViewCell.m in Sources */,
+				115E37071CAD08AD0054A9F2 /* AFPreviewPhotoViewController.m in Sources */,
 				1190D39B1CAAC97A007E4450 /* AFAlbumTableViewCell.m in Sources */,
 				1190D3981CAAC879007E4450 /* AFAlbumsTableViewController.m in Sources */,
 				1190D3ED1CABDE28007E4450 /* AFPhotosCollectionViewController.m in Sources */,

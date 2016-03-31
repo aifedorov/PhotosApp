@@ -116,6 +116,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="ZKH-ay-dl6" id="q6d-uB-cQa"/>
+                                    <segue destination="YRw-Tl-nRO" kind="show" id="Tq0-XF-SnO"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -128,6 +129,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5g3-kx-GGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1356" y="265"/>
+        </scene>
+        <!--PreviewPhoto-->
+        <scene sceneID="wd8-U0-LSR">
+            <objects>
+                <viewController title="PreviewPhoto" id="YRw-Tl-nRO" customClass="AFAlbumsTableViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tiB-Ph-42z"/>
+                        <viewControllerLayoutGuide type="bottom" id="mqw-xf-4N4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y2w-UW-Bl1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gXQ-Jy-mqx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AMn-DB-ezp">

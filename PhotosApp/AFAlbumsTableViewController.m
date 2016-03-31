@@ -30,14 +30,8 @@ static NSString * const cellIdentifier = @"albumCell";
     self.imageManager = [PHCachingImageManager defaultManager];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -57,17 +51,17 @@ static NSString * const cellIdentifier = @"albumCell";
     
     PHAsset *asset = [assetsFetchResult lastObject];
     
-    CGSize AssetGridThumbnailSize =  CGSizeMake(80.f, 80.f);
+    CGRect frameCell = [tableView rectForRowAtIndexPath:indexPath];
+    CGSize assetThumbnailSize =  CGSizeMake(frameCell.size.width, frameCell.size.height);
     
     [self.imageManager requestImageForAsset:asset
-                                 targetSize:AssetGridThumbnailSize
-                                contentMode:PHImageContentModeAspectFill
+                                 targetSize:assetThumbnailSize
+                                contentMode:PHImageContentModeDefault
                                     options:nil
                               resultHandler:^(UIImage *result, NSDictionary *info) {
                                   cell.thumbnailImage = result;
                               }];
     
-
     cell.nameLable.text = assetCollection.localizedTitle;
     cell.countPhotos.text = [NSString stringWithFormat:@"%ld", [assetsFetchResult count]];
     
