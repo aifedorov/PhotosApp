@@ -67,7 +67,7 @@ static CGSize AssetThumbnailSize;
     
     [[PHImageManager defaultManager] requestImageForAsset:asset
                                  targetSize:AssetThumbnailSize
-                                contentMode:PHImageContentModeDefault
+                                contentMode:PHImageContentModeAspectFill
                                     options:nil
                               resultHandler:^(UIImage *result, NSDictionary *info) {
                                   if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
