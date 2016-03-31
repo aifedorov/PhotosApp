@@ -10,7 +10,7 @@
 #import "AFPhotoCollectionViewCell.h"
 #import "AFPreviewPhotoViewController.h"
 
-@interface AFPhotosCollectionViewController ()
+@interface AFPhotosCollectionViewController () <UICollectionViewDelegateFlowLayout>
 
 @end
 
@@ -18,6 +18,9 @@
 
 static NSString * const reuseIdentifier = @"CellView";
 static CGSize AssetThumbnailSize;
+static NSInteger const countCellInRow = 4;
+static CGFloat const interitemSpacing = 2.f;
+static CGFloat const lineSpacing = 2.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,5 +80,26 @@ static CGSize AssetThumbnailSize;
     
     return cell;
 }
+
+#pragma mark - <UICollectionViewDelegateFlowLayout>
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat widthItem = [UIScreen mainScreen].bounds.size.width / countCellInRow - interitemSpacing;
+    CGFloat heightItem = widthItem;
+    
+    return CGSizeMake(widthItem, heightItem);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return interitemSpacing;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return lineSpacing;
+}
+
 
 @end
