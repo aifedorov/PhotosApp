@@ -13,8 +13,6 @@
 @interface AFPreviewPhotoViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *photoPreviewImageView;
-
-@property (nonatomic, strong) UIImage *photoImage;
 @property (nonatomic, strong) PHAsset *asset;
 
 @end

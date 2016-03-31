@@ -17,27 +17,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIScreen *mainScreen = [UIScreen mainScreen];
-    
-    CGSize targetSize = CGSizeMake(CGRectGetWidth(mainScreen.bounds), CGRectGetHeight(mainScreen.bounds));
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize targetSize = CGSizeMake(CGRectGetWidth(self.photoPreviewImageView.bounds) * scale, CGRectGetHeight(self.photoPreviewImageView.bounds) * scale);
     
     [[PHImageManager defaultManager] requestImageForAsset:self.asset
                                                targetSize:targetSize
                                                contentMode:PHImageContentModeAspectFit
                                                   options:nil
                                             resultHandler:^(UIImage *result, NSDictionary *info) {
-                                                self.photoImage = result;
+                                                self.photoPreviewImageView.image = result;
                                             }];
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-- (void)setPhotoImage:(UIImage *)photoImage {
-    _photoImage = photoImage;
-    self.photoPreviewImageView.image = photoImage;
 }
 
 @end
