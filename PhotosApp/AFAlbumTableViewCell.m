@@ -12,6 +12,7 @@
 
 - (void)setThumbnailImage:(UIImage *)thumbnailImage {
     _thumbnailImage = thumbnailImage;
+    self.thumbnailImageView.contentMode = UIViewContentModeScaleToFill;
     self.thumbnailImageView.image = thumbnailImage;
 }
 

@@ -77,7 +77,6 @@ static CGFloat const lineSpacing = 2.f;
                                       cell.thumbnailImage = result;
                                   }
                               }];
-    
     return cell;
 }
 

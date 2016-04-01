@@ -25,14 +25,23 @@
                                                contentMode:PHImageContentModeAspectFit
                                                   options:nil
                                             resultHandler:^(UIImage *result, NSDictionary *info) {
-                                                self.photoPreviewImageView.image = result;
+                                                self.photoImage = result;
                                             }];
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+
+#pragma mark - Property
+
+- (void)setPhotoImage:(UIImage *)photoImage {
+    _photoImage = photoImage;
+    self.photoPreviewImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.photoPreviewImageView.image = photoImage;
+}
+
 
 @end
 

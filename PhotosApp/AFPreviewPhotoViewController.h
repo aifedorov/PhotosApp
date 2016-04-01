@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photoPreviewImageView;
 @property (nonatomic, strong) PHAsset *asset;
 
+@property (nonatomic, strong) UIImage *photoImage;
+
 @end

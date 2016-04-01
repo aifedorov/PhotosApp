@@ -20,15 +20,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a95-S8-ZkI">
-                                            <rect key="frame" x="8" y="5" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="948-Yd-EHk"/>
-                                                <constraint firstAttribute="height" constant="80" id="mmx-6U-kji"/>
-                                            </constraints>
-                                        </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3x6-5M-cFq">
-                                            <rect key="frame" x="113" y="5" width="424" height="80"/>
+                                            <rect key="frame" x="108" y="7" width="429" height="75"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="countPthotos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtK-kL-L2g">
                                                     <rect key="frame" x="0.0" y="44" width="77" height="15"/>
@@ -51,6 +44,13 @@
                                                 <constraint firstItem="1y0-Hz-cRb" firstAttribute="top" secondItem="3x6-5M-cFq" secondAttribute="top" constant="15" id="qwq-ki-fhj"/>
                                             </constraints>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a95-S8-ZkI">
+                                            <rect key="frame" x="8" y="7" width="75" height="75"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="948-Yd-EHk"/>
+                                                <constraint firstAttribute="height" constant="75" id="mmx-6U-kji"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="3x6-5M-cFq" firstAttribute="leading" secondItem="a95-S8-ZkI" secondAttribute="trailing" constant="25" id="RXj-eh-0ts"/>
@@ -130,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="1374" y="265"/>
         </scene>
-        <!--PreviewPhoto-->
+        <!--Preview Photo View Controller-->
         <scene sceneID="wd8-U0-LSR">
             <objects>
-                <viewController title="PreviewPhoto" id="YRw-Tl-nRO" customClass="AFPreviewPhotoViewController" sceneMemberID="viewController">
+                <viewController id="YRw-Tl-nRO" customClass="AFPreviewPhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tiB-Ph-42z"/>
                         <viewControllerLayoutGuide type="bottom" id="mqw-xf-4N4"/>

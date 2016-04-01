@@ -22,10 +22,29 @@
 
 static NSString * const cellIdentifier = @"albumCell";
 
-- (void)viewDidLoad {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewDidLoad];
     
     self.userAlbums = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Внимание!" message:@"Вы запретили доступ к фото" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"ОК"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action) {}];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:^{}];
+        
+    } else if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized){
+        self.userAlbums = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+        
+    }
+    
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +62,7 @@ static NSString * const cellIdentifier = @"albumCell";
     return assetsFetchResult;
 }
 
-#pragma mark - Table view data source
+#pragma mark - <UITableViewDateSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.userAlbums count];
