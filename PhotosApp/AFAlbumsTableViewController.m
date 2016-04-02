@@ -40,6 +40,8 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Private methods
+
 - (PHFetchResult *) fetchPhotosAtIndexPath:(PHFetchResult *)fetchResult indexPath:(NSIndexPath *)indexPath {
     
     PHAssetCollection *assetCollection = (PHAssetCollection *)fetchResult[indexPath.row];
@@ -108,25 +110,35 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
         cell = [[AFAlbumTableViewCell alloc] init];
     }
     
-    PHFetchResult *assetsFetchResult = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
+    cell.nameLable.text = @"";
+    cell.countPhotos.text = @"0";
     
-    PHAsset *asset = [assetsFetchResult lastObject];
-    
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGSize assetThumbnailSize = CGSizeMake(CGRectGetWidth(cell.thumbnailImageView.bounds) * scale, CGRectGetHeight(cell.thumbnailImageView.bounds) * scale);
-    
-    [[PHImageManager defaultManager] requestImageForAsset:asset
-                                 targetSize:assetThumbnailSize
-                                contentMode:PHImageContentModeDefault
-                                    options:nil
-                              resultHandler:^(UIImage *result, NSDictionary *info) {
-                                  cell.thumbnailImage = result;
-                              }];
-    
-    PHAssetCollection *assetCollection = (PHAssetCollection *)self.userAlbums[indexPath.row];
-    
-    cell.nameLable.text = assetCollection.localizedTitle;
-    cell.countPhotos.text = [NSString stringWithFormat:@"%ld", (unsigned long)[assetsFetchResult count]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        PHFetchResult *assetsFetchResult = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            AFAlbumTableViewCell *updateCell = (AFAlbumTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            
+            PHAsset *asset = [assetsFetchResult lastObject];
+            CGFloat scale = [UIScreen mainScreen].scale;
+            CGSize assetThumbnailSize = CGSizeMake(CGRectGetWidth(updateCell.thumbnailImageView.bounds) * scale, CGRectGetHeight(cell.thumbnailImageView.bounds) * scale);
+            
+            [[PHImageManager defaultManager] requestImageForAsset:asset
+                                                       targetSize:assetThumbnailSize
+                                                      contentMode:PHImageContentModeDefault
+                                                          options:nil
+                                                    resultHandler:^(UIImage *result, NSDictionary *info) {
+                                                        updateCell.thumbnailImage = result;
+                                                    }];
+            
+            PHAssetCollection *assetCollection = (PHAssetCollection *)self.userAlbums[indexPath.row];
+            
+            updateCell.nameLable.text = assetCollection.localizedTitle;
+            updateCell.countPhotos.text = [NSString stringWithFormat:@"%ld", (unsigned long)[assetsFetchResult count]];
+        });
+    });
     
     return cell;
 }
@@ -144,7 +156,14 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
-        photosCollectionViewController.photosAssetsFetchResults = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            photosCollectionViewController.photosAssetsFetchResults = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [photosCollectionViewController.collectionView reloadData];
+            });
+            
+        });
     }
 }
 

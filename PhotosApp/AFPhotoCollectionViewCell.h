@@ -11,6 +11,6 @@
 @interface AFPhotoCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImage *thumbnailImage;
-@property (nonatomic, copy) NSString *representedAssetIdentifier;
+@property (nonatomic, strong) NSString *representedAssetIdentifier;
 
 @end
