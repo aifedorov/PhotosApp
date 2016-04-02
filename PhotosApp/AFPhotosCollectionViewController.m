@@ -18,7 +18,8 @@
 
 static NSString * const reuseIdentifier = @"CellView";
 static CGSize AssetThumbnailSize;
-static NSInteger const countCellInRow = 4;
+static CGFloat const widthItem = 78.f;
+static CGFloat const heightItem = 78.f;
 static CGFloat const interitemSpacing = 2.f;
 static CGFloat const lineSpacing = 2.f;
 
@@ -83,9 +84,6 @@ static CGFloat const lineSpacing = 2.f;
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CGFloat widthItem = [UIScreen mainScreen].bounds.size.width / countCellInRow - interitemSpacing;
-    CGFloat heightItem = widthItem;
     
     return CGSizeMake(widthItem, heightItem);
 }
