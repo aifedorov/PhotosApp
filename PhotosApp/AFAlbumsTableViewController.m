@@ -28,11 +28,8 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
-    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        [self checkAuthorizationStatus:status];
-    }];
-    
+
+    [self checkAuthorizationStatus:[PHPhotoLibrary authorizationStatus]];
     [super viewWillAppear:animated];
 }
 
@@ -88,7 +85,7 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
     }
 }
 
-#pragma mark - <UITableViewDateSource>
+#pragma mark - UITableViewDateSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.userAlbums count] != 0 ? [self.userAlbums count] : 1;
@@ -100,47 +97,56 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
         UITableViewCell *defaultCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifierDefault];
         defaultCell.textLabel.textAlignment = NSTextAlignmentCenter;
         defaultCell.textLabel.text = @"List albums is empty";
+        defaultCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return defaultCell;
-    }
-    
-    AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    if (!cell) {
-        cell = [[AFAlbumTableViewCell alloc] init];
-    }
-    
-    cell.nameLable.text = @"";
-    cell.countPhotos.text = @"0";
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        PHFetchResult *assetsFetchResult = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
+    } else {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        
+        if (!cell) {
+            cell = [[AFAlbumTableViewCell alloc] init];
+        }
+        
+        cell.nameLable.text = @"";
+        cell.countPhotos.text = @"0";
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            AFAlbumTableViewCell *updateCell = (AFAlbumTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            PHFetchResult *assetsFetchResult = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
             
-            PHAsset *asset = [assetsFetchResult lastObject];
-            CGFloat scale = [UIScreen mainScreen].scale;
-            CGSize assetThumbnailSize = CGSizeMake(CGRectGetWidth(updateCell.thumbnailImageView.bounds) * scale, CGRectGetHeight(cell.thumbnailImageView.bounds) * scale);
-            
-            [[PHImageManager defaultManager] requestImageForAsset:asset
-                                                       targetSize:assetThumbnailSize
-                                                      contentMode:PHImageContentModeDefault
-                                                          options:nil
-                                                    resultHandler:^(UIImage *result, NSDictionary *info) {
-                                                        updateCell.thumbnailImage = result;
-                                                    }];
-            
-            PHAssetCollection *assetCollection = (PHAssetCollection *)self.userAlbums[indexPath.row];
-            
-            updateCell.nameLable.text = assetCollection.localizedTitle;
-            updateCell.countPhotos.text = [NSString stringWithFormat:@"%ld", (unsigned long)[assetsFetchResult count]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                AFAlbumTableViewCell *updateCell = (AFAlbumTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+                
+                PHAsset *asset = [assetsFetchResult lastObject];
+                CGFloat scale = [UIScreen mainScreen].scale;
+                CGSize assetThumbnailSize = CGSizeMake(CGRectGetWidth(updateCell.thumbnailImageView.bounds) * scale, CGRectGetHeight(cell.thumbnailImageView.bounds) * scale);
+                
+                [[PHImageManager defaultManager] requestImageForAsset:asset
+                                                           targetSize:assetThumbnailSize
+                                                          contentMode:PHImageContentModeDefault
+                                                              options:nil
+                                                        resultHandler:^(UIImage *result, NSDictionary *info) {
+                                                            updateCell.thumbnailImage = result;
+                                                        }];
+                
+                PHAssetCollection *assetCollection = (PHAssetCollection *)self.userAlbums[indexPath.row];
+                
+                updateCell.nameLable.text = assetCollection.localizedTitle;
+                updateCell.countPhotos.text = [NSString stringWithFormat:@"%ld", (unsigned long)[assetsFetchResult count]];
+            });
         });
-    });
-    
-    return cell;
+        
+        return cell;
+    }
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Navigation
@@ -156,14 +162,15 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            photosCollectionViewController.photosAssetsFetchResults = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [photosCollectionViewController.collectionView reloadData];
+        if (self.userAlbums) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                photosCollectionViewController.photosAssetsFetchResults = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [photosCollectionViewController.collectionView reloadData];
+                });
             });
-            
-        });
+        }
     }
 }
 

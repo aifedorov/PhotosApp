@@ -56,7 +56,7 @@ static CGFloat const lineSpacing = 2.f;
     }
 }
 
-#pragma mark - <UICollectionViewDataSource>
+#pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.photosAssetsFetchResults count];
@@ -81,7 +81,7 @@ static CGFloat const lineSpacing = 2.f;
     return cell;
 }
 
-#pragma mark - <UICollectionViewDelegateFlowLayout>
+#pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
