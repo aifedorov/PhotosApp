@@ -102,7 +102,6 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
         return defaultCell;
         
     } else {
-        
         AFAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         
         if (!cell) {
@@ -161,7 +160,6 @@ static NSString * const cellIdentifierDefault = @"defaultCell";
         photosCollectionViewController.title = cell.nameLable.text;
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        
         if (self.userAlbums) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 photosCollectionViewController.photosAssetsFetchResults = [self fetchPhotosAtIndexPath:self.userAlbums indexPath:indexPath];
